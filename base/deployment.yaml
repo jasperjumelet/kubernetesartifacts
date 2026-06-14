@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: color-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: color-app
+  template:
+    metadata:
+      labels:
+        app: color-app
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: color-app
+          image: jassyking010/color-app:latest
+          ports:
+            - containerPort: 5000
+          env:
+            - name: APP_COLOR
+              value: "blue"  # default fallback

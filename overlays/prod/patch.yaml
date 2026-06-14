@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: color-app
+spec:
+  replicas: 3
+  template:
+    spec:
+      containers:
+        - name: color-app
+          env:
+            - name: APP_COLOR
+              value: "red"
