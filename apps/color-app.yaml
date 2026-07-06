@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: auth-service-staging
+  name: color-app
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -14,7 +14,7 @@ spec:
     path: services/colorapp/overlays/dev
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: staging # The actual K8s namespace where your app code will live
+    namespace: color-app # The actual K8s namespace where your app code will live
   syncPolicy:
     automated:
       prune: true
