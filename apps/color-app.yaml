@@ -11,7 +11,7 @@ spec:
     repoURL: 'https://github.com/jasperjumelet/kubernetesartifacts.git'
     targetRevision: HEAD
     # This tells ArgoCD to run Kustomize on this specific overlay directory
-    path: services/auth-service/overlays/staging
+    path: services/colorapp/overlays/dev
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: staging # The actual K8s namespace where your app code will live
