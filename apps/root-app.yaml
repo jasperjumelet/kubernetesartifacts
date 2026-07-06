@@ -9,7 +9,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/your-username/your-gitops-repo.git'
+    repoURL: 'https://github.com/jasperjumelet/kubernetesartifacts.git'
     targetRevision: HEAD
     path: apps/ # It watches its own folder for other apps!
   destination:

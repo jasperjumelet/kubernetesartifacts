@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/your-username/your-gitops-repo.git'
+    repoURL: 'https://github.com/jasperjumelet/kubernetesartifacts.git'
     targetRevision: HEAD
     # This tells ArgoCD to run Kustomize on this specific overlay directory
     path: services/auth-service/overlays/staging
