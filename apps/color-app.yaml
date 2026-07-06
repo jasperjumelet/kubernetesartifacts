@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: auth-service-staging
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/your-username/your-gitops-repo.git'
+    targetRevision: HEAD
+    # This tells ArgoCD to run Kustomize on this specific overlay directory
+    path: services/auth-service/overlays/staging
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: staging # The actual K8s namespace where your app code will live
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true # Automatically creates the 'staging' namespace if it doesn't exist

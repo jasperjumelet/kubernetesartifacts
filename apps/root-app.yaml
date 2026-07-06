@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-application
+  namespace: argocd
+  # The finalizer ensures that if you delete this app, it cleans up everything it created
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/your-username/your-gitops-repo.git'
+    targetRevision: HEAD
+    path: apps/ # It watches its own folder for other apps!
+  destination:
+    server: 'https://kubernetes.default.svc' # Deploys to the same cluster ArgoCD is on
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
