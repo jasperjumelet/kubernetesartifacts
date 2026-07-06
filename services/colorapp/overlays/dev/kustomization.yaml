@@ -3,3 +3,7 @@ resources:
 
 patches:
   - path: patch.yaml
+
+images:
+  - name: jassyking010/color-app
+    newTag: latest
